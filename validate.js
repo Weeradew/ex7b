@@ -6,8 +6,16 @@ function checkSID() {
   
   function checkCandiNo() {
 	let candi = (document.getElementById("candi").value).trim();
+  
+	// ตรวจสอบว่าเป็นตัวเลขล้วนๆ (ไม่มีตัวอักษรหรือสัญลักษณ์อื่น)
+	if (!/^[0-9]+$/.test(candi)) {
+	  return false;
+	}
+  
 	let num = parseInt(candi);
-	return /^[0-9]+$/.test(candi) && !isNaN(num) && num >= 1 && num <= 10;
+  
+	// ตรวจสอบว่าเป็นจำนวนเต็ม (ไม่มีทศนิยม) และอยู่ในช่วง 1 ถึง 10
+	return Number.isInteger(num) && num >= 1 && num <= 10;
   }
   
   function validateForm() {
